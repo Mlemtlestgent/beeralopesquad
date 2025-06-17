@@ -1,0 +1,4 @@
+T:\Steam\steamapps\common\RimWorld\Mods\BeeropeBeeratTesting\1.2\Assemblies\BeeralopeEvents.dll
+T:\Steam\steamapps\common\RimWorld\Mods\BeeropeBeeratTesting\1.2\Source\BeeralopeEvents\obj\Debug\BeeralopeEvents.csprojAssemblyReference.cache
+T:\Steam\steamapps\common\RimWorld\Mods\BeeropeBeeratTesting\1.2\Source\BeeralopeEvents\obj\Debug\BeeralopeEvents.csproj.CoreCompileInputs.cache
+T:\Steam\steamapps\common\RimWorld\Mods\BeeropeBeeratTesting\1.2\Source\BeeralopeEvents\obj\Debug\BeeralopeEvents.dll
