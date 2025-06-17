@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>vanillaexpanded.vmemese</li>
+		</mods>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/SupportedDrinksForPreceptDefs[defName=VME_SupportedDrinksForPreceptDef]/supportedDrinksForPrecept</xpath>
+			<value>
+				<li>NaturalBeer</li>
+			</value>
+		</match>
+	</Operation>
+</Patch>

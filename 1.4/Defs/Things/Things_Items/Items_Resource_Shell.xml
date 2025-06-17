@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="MakeableShellBase">
+    <defName>Shell_BeerbroExplosive</defName>
+    <label>Beerbro Shell</label>
+    <description>A shell filled with the sacs of explosive Beerbro alcohol. Do you really think this is a good idea?</description>
+    <graphicData>
+      <texPath>Items/BeerbroShell</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>8.9</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+		<preExplosionSpawnThingDef>Filth_NaturalBeer</preExplosionSpawnThingDef>
+		<preExplosionSpawnChance>0.4</preExplosionSpawnChance>
+        <wickTicks>30~60</wickTicks>
+      </li>
+    </comps>
+    <projectileWhenLoaded>Bullet_Shell_BeerbroIncendiary</projectileWhenLoaded>
+    <costList>
+      <Steel>25</Steel>
+      <Beerbro_Organ>1</Beerbro_Organ>
+    </costList>
+    <recipeMaker>
+      <researchPrerequisite>Mortars</researchPrerequisite>
+    </recipeMaker>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Shell_BeerbroIncendiary</defName>
+    <label>Beerbro Shell</label>
+    <graphicData>
+      <texPath>Things/Projectile/ShellIncendiary</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Flame</damageDef>
+      <speed>41</speed>
+      <explosionRadius>8.9</explosionRadius>
+	  <preExplosionSpawnThingDef>Filth_NaturalBeer</preExplosionSpawnThingDef>
+	  <preExplosionSpawnChance>0.35</preExplosionSpawnChance>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+	  <ai_IsIncendiary>true</ai_IsIncendiary>
+    </projectile>
+  </ThingDef>
+  
+</Defs>

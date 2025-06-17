@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+
+	<VanillaMemesExpanded.SupportedDrinksForPreceptDefs>
+		<defName>Mlem_SupportedDrinks</defName>
+		<supportedDrinksForPrecept>							
+			<li>NaturalBeer</li>
+		
+		</supportedDrinksForPrecept>							
+	</VanillaMemesExpanded.SupportedDrinksForPreceptDefs>
+
+
+
+
+
+
+
+</Defs>
