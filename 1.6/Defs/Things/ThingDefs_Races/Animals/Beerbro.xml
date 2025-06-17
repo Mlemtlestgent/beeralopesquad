@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+ <ThingDef ParentName="AnimalThingBase">
+    <defName>Beerbro</defName>
+    <label>Beerbro</label>
+    <description>A close relative of the Thrumbo that was subjected to genetic modification. The Beerbro is a bizarre creature in the sense that it is cabable of being milked for a strange type of beer. Though the changes it has gone through seems to leave the creature more vulnerable to damage and slightly less intelligent, but more resistant to fire. It is best to be wary of these beings as they are capable of exploding upon death and the explosion radius is normally much larger than the average Boomalope. These creatures create 50 natural beer every 15 days.</description>
+    <statBases>
+      <MoveSpeed>5.5</MoveSpeed>
+      <MarketValue>4000</MarketValue>
+      <ComfyTemperatureMin>-65</ComfyTemperatureMin>
+      <ComfyTemperatureMax>75</ComfyTemperatureMax>
+      <ArmorRating_Sharp>0.30</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.20</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.70</ArmorRating_Heat>
+	  <FilthRate>8</FilthRate>
+      <CaravanRidingSpeedFactor>1.6</CaravanRidingSpeedFactor>
+	  <Wildness>0.985</Wildness>
+    </statBases>
+	<uiIconScale>1.75</uiIconScale>
+	<comps>
+      <li Class="CompProperties_Milkable">
+        <milkDef>NaturalBeer</milkDef>
+        <milkIntervalDays>15</milkIntervalDays>
+        <milkAmount>50</milkAmount>
+        <milkFemaleOnly>false</milkFemaleOnly>
+      </li>
+    </comps>
+    <tools>
+      <li>
+        <label>horn</label>
+        <capacities>
+          <li>Scratch</li>
+          <li>Stab</li>
+        </capacities>
+        <power>23</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HornAttackTool</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <capacities>
+          <li>Bite</li>
+        </capacities>
+        <power>28</power>
+        <cooldownTime>2.6</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+        <chanceFactor>0.7</chanceFactor>
+      </li>
+      <li>
+        <label>left foot</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>19</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>FrontLeftLeg</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>right foot</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>19</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>FrontRightLeg</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>17</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+    </tools>
+    <race>
+      <body>QuadrupedAnimalWithHoovesAndHorn</body>
+	  <deathAction>
+		<workerClass>BeeralopeActions.DeathActionWorker_BeerExtremeExplosion</workerClass>
+	  </deathAction>
+      <herdMigrationAllowed>false</herdMigrationAllowed>
+      <baseBodySize>4</baseBodySize>
+      <baseHungerRate>1.75</baseHungerRate>
+      <baseHealthScale>7.0</baseHealthScale>
+      <foodType>VegetarianRoughAnimal, DendrovoreAnimal</foodType>
+      <leatherDef>Leather_Thrumbo</leatherDef>
+      <trainability>Intermediate</trainability>
+      <gestationPeriodDays>60</gestationPeriodDays>
+      <manhunterOnDamageChance>1.00</manhunterOnDamageChance>
+      <lifeExpectancy>220</lifeExpectancy>
+      <willNeverEat>
+        <li MayRequire="Ludeon.RimWorld.Royalty">Plant_TreeAnima</li>
+        <li MayRequire="Ludeon.RimWorld.Ideology">Plant_TreeGauranlen</li>
+      </willNeverEat>
+      <lifeStageAges>
+        <li>
+          <def>AnimalBaby</def>
+          <minAge>0</minAge>
+        </li>
+        <li>
+          <def>AnimalJuvenile</def>
+          <minAge>2.0</minAge>
+        </li>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>4.0</minAge>
+          <soundCall>Pawn_Thrumbo_Call</soundCall>
+          <soundAngry>Pawn_Thrumbo_Angry</soundAngry>
+          <soundWounded>Pawn_Thrumbo_Pain</soundWounded>
+          <soundDeath>Pawn_Thrumbo_Death</soundDeath>
+        </li>
+      </lifeStageAges>
+      <soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+	</race>
+    <tradeTags>
+      <li>AnimalExotic</li>
+    </tradeTags>
+	<butcherProducts>
+	<Beerbro_Organ>1</Beerbro_Organ>
+	</butcherProducts>
+  </ThingDef>
+
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>Beerbro</defName>
+    <label>beerbro</label>
+    <race>Beerbro</race>
+    <combatPower>500</combatPower>
+    <canArriveManhunter>false</canArriveManhunter>
+    <ecoSystemWeight>1</ecoSystemWeight>
+    <lifeStages>
+      <li>
+        <label>beerbro calf</label>
+        <labelPlural>beerbro calves</labelPlural>
+        <bodyGraphicData>
+          <texPath>Animals/Beerbro/Beerbro</texPath>
+          <drawSize>2.5</drawSize>
+          <shadowData>
+            <volume>(0.4, 0.3, 0.3)</volume>
+            <offset>(0,0,-0.2)</offset>
+          </shadowData>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Thrumbo/Dessicated_Thrumbo</texPath>
+          <drawSize>2.5</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Animals/Beerbro/Beerbro</texPath>
+          <drawSize>4.0</drawSize>
+          <shadowData>
+            <volume>(0.7, 0.6, 0.4)</volume>
+            <offset>(0,0,-0.25)</offset>
+          </shadowData>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Thrumbo/Dessicated_Thrumbo</texPath>
+          <drawSize>4.0</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Animals/Beerbro/Beerbro</texPath>
+          <drawSize>4.8</drawSize>
+          <shadowData>
+            <volume>(1, 0.8, 0.5)</volume>
+            <offset>(0,0,-0.5)</offset>
+          </shadowData>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Thrumbo/Dessicated_Thrumbo</texPath>
+          <drawSize>4.8</drawSize>
+        </dessicatedBodyGraphicData>
+        <butcherBodyPart>
+          <bodyPartGroup>HornAttackTool</bodyPartGroup>
+          <thing>ThrumboHorn</thing>
+        </butcherBodyPart>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+  
+ </Defs>

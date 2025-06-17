@@ -1,0 +1,8 @@
+T:\Steam\steamapps\common\RimWorld\Mods\BeeropeBeeratTesting\1.2\Source\Beerbro\obj\Debug\Beerbro.csprojAssemblyReference.cache
+T:\Steam\steamapps\common\RimWorld\Mods\BeeropeBeeratTesting\1.2\Source\Beerbro\obj\Debug\Beerbro.csproj.CoreCompileInputs.cache
+T:\Steam\steamapps\common\RimWorld\Mods\BeeropeBeeratTesting\1.2\Assemblies\BeeralopeActions.dll
+T:\Steam\steamapps\common\RimWorld\Mods\BeeropeBeeratTesting\1.2\Source\Beerbro\obj\Debug\BeeralopeActions.dll
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\Beeralope Squad - Dev\1.5\Source\Beerbro\obj\Debug\Beerbro.csproj.AssemblyReference.cache
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\Beeralope Squad - Dev\1.5\Source\Beerbro\obj\Debug\Beerbro.csproj.CoreCompileInputs.cache
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\Beeralope Squad - Dev\1.5\Source\Beerbro\obj\Debug\BeeralopeActions.dll
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\Beeralope Squad - Dev\1.5\Assemblies\BeeralopeActions.dll
