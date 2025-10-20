@@ -5,57 +5,62 @@ using Verse;
 
 namespace BeeralopeEvents
 {
-    
+    [DefOf]
+    public static class InternalDefOf
+    {
+        public static PawnKindDef Beerbro;
+
+        static InternalDefOf()
+        {
+            DefOfHelper.EnsureInitializedInCtor(typeof(InternalDefOf));
+        }
+    }
         public class IncidentWorker_BeerbroPasses : IncidentWorker
         {
-            protected override bool CanFireNowSub(IncidentParms parms)
-            {
-                Map map = (Map)parms.target;
-                IntVec3 intVec;
-                return !map.gameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && map.mapTemperature.SeasonAndOutdoorTemperatureAcceptableFor(ThingDef.Named("Beerbro")) && this.TryFindEntryCell(map, out intVec);
-
-            throw new NotImplementedException();
-            }
+        protected override bool CanFireNowSub(IncidentParms parms)
+        {
+            Map map = (Map)parms.target;
+            IntVec3 cell;
+            return !map.gameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout) && map.mapTemperature.SeasonAndOutdoorTemperatureAcceptableFor(InternalDefOf.Beerbro.race) && TryFindEntryCell(map, out cell);
+        }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            IntVec3 intVec;
-            if (!this.TryFindEntryCell(map, out intVec))
+            if (!TryFindEntryCell(map, out var cell))
             {
                 return false;
             }
-            PawnKindDef pawnKindDef = PawnKindDef.Named("Beerbro");
-            int num = GenMath.RoundRandom(StorytellerUtility.DefaultThreatPointsNow(map) / pawnKindDef.combatPower);
+            PawnKindDef beerbro = InternalDefOf.Beerbro;
+            int value = GenMath.RoundRandom(StorytellerUtility.DefaultThreatPointsNow(map) / beerbro.combatPower);
             int max = Rand.RangeInclusive(3, 6);
-            num = Mathf.Clamp(num, 2, max);
-            int num2 = Rand.RangeInclusive(90000, 150000);
-            IntVec3 invalid = IntVec3.Invalid;
-            if (!RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(intVec, map, 10f, out invalid))
+            value = Mathf.Clamp(value, 2, max);
+            int num = Rand.RangeInclusive(90000, 150000);
+            IntVec3 result = IntVec3.Invalid;
+            if (!RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(cell, map, 10f, out result))
             {
-                invalid = IntVec3.Invalid;
+                result = IntVec3.Invalid;
             }
             Pawn pawn = null;
-            for (int i = 0; i < num; i++)
+            for (int i = 0; i < value; i++)
             {
-                IntVec3 loc = CellFinder.RandomClosewalkCellNear(intVec, map, 10, null);
-                pawn = PawnGenerator.GeneratePawn(pawnKindDef, null);
-                GenSpawn.Spawn(pawn, loc, map, Rot4.Random, WipeMode.Vanish, false);
-                pawn.mindState.exitMapAfterTick = Find.TickManager.TicksGame + num2;
-                if (invalid.IsValid)
+                IntVec3 loc = CellFinder.RandomClosewalkCellNear(cell, map, 10);
+                pawn = PawnGenerator.GeneratePawn(beerbro);
+                GenSpawn.Spawn(pawn, loc, map, Rot4.Random);
+                pawn.mindState.exitMapAfterTick = Find.TickManager.TicksGame + num;
+                if (result.IsValid)
                 {
-                    pawn.mindState.forcedGotoPosition = CellFinder.RandomClosewalkCellNear(invalid, map, 10, null);
+                    pawn.mindState.forcedGotoPosition = CellFinder.RandomClosewalkCellNear(result, map, 10);
                 }
-                base.SendStandardLetter("LetterLabelBeerbroPasses".Translate(pawnKindDef.label).CapitalizeFirst(), "LetterBeerbroPasses".Translate(pawnKindDef.label), LetterDefOf.PositiveEvent, parms, pawn, Array.Empty<NamedArgument>());
-                return true;
             }
+            Find.LetterStack.ReceiveLetter("LetterLabelBeerbroPasses".Translate(beerbro.label), "LetterBeerbroPasses".Translate(beerbro.label), LetterDefOf.PositiveEvent, pawn);
             return true;
         }
 
 
             private bool TryFindEntryCell(Map map, out IntVec3 cell)
             {
-            return RCellFinder.TryFindRandomPawnEntryCell(out cell, map, CellFinder.EdgeRoadChance_Animal + 0.2f, false, null);
+                return RCellFinder.TryFindRandomPawnEntryCell(out cell, map, CellFinder.EdgeRoadChance_Animal + 0.2f);
             }
         }
     }
